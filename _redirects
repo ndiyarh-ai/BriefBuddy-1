@@ -1,0 +1,38 @@
+# Netlify Redirects für BriefBuddy PWA
+
+# Redirect all routes to index.html for SPA support
+/*    /index.html   200
+
+# API redirects (falls später API hinzugefügt wird)
+/api/*  https://api.briefbuddy.app/:splat  200
+
+# Force HTTPS (optional)
+http://briefbuddy.netlify.app/*  https://briefbuddy.netlify.app/:splat  301!
+
+# Custom headers für PWA
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+# Cache Control für statische Dateien
+/manifest.json
+  Cache-Control: public, max-age=0, must-revalidate
+  
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+  
+*.js
+  Cache-Control: public, max-age=31536000, immutable
+  
+*.css
+  Cache-Control: public, max-age=31536000, immutable
+  
+*.png
+  Cache-Control: public, max-age=31536000, immutable
+  
+*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+  
+*.svg
+  Cache-Control: public, max-age=31536000, immutable
